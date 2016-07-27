@@ -11,6 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^0.8.6",
-    "mysql": "^2.10.2"
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "mysql": "^2.10.2",
+    "nodem": "^0.6.3",
+    "nodemon": "^1.9.2",
+    "secure-random": "^1.1.1"
   }
 }

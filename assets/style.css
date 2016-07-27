@@ -1,0 +1,12 @@
+body {
+    background-color: grey;
+}
+button {
+    background-color: purple;
+    width: 200px;
+    height: 30px;
+    font-family: Courier;
+    font-size: 18px;
+    text-align: center;
+    color: pink;
+}

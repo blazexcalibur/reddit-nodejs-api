@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser');
 // create a connection to our Cloud9 server
 var conn = mysql.createConnection({
   host: 'localhost',
-  user: 'carbonneau', // CHANGE THIS :)
+  user: 'blazexcalibur', // CHANGE THIS :)
   password: '',
   database: 'reddit'
 });

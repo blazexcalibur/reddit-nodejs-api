@@ -1,0 +1,23 @@
+<% layout('layout') -%>
+
+<% function retrieveComments(comments){ %> 
+    <li >
+        <h3 class="comments">
+                <p><%=comments.comment%></p>
+                <article>
+                  <footer>
+                    <p>Posted by: <%=comments.user%>
+                    </p>
+                  </footer>
+                </article>
+        </h3>
+    </li>
+<% } %>
+
+<h3 class = "comments">
+    <ol>
+        <% comments.forEach(function(comm){
+          retrieveComments(comm);
+        }) %> 
+    </ol>
+</h3>

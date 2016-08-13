@@ -1,0 +1,220 @@
+/*header styling*/
+
+
+
+
+.topHeaderText {
+    font-size: 4em;
+    font-family: Oswald;
+    text-align: center;
+    margin:auto;
+    position: relative;
+}
+
+/* navigation bar */
+
+.nav {
+    color: black;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navli {
+    font-family: Oswald;
+    text-decoration: none;
+    color: black;
+    display: inline;
+    list-style-type: none;
+    padding: 1em;
+}
+
+.navli a {
+    color: black;
+    text-decoration: none;
+    font-size: 2em;
+     
+}
+
+/* user buttons */
+
+.user {
+    text-align: center;
+}
+    
+    
+.username{
+    text-align: right;
+    font-family: Oswald;
+    display: inline-block;
+    padding: 1px;
+}
+
+.logoutForm {
+    text-align: center;
+}
+.button, button {
+    width: 10em;
+    height: 2em;
+    background-color: red;
+    border: none;
+    font-family: Oswald;
+}
+
+
+/* sort buttons */ 
+
+.sort {
+    text-align: center;
+    border-top: 1px solid black;
+    padding: 1em;
+}
+
+.sortli {
+    display: inline-block;
+}
+
+.sortli a {
+    font-size: 1.5em;
+    font-family: Oswald;
+    text-decoration: none;
+    padding: 1em;
+    color: black;
+}
+
+
+/* login and signup */
+
+.form button{
+    font-family: 'Libre Baskerville';
+    width: 15em;
+    border: 1px solid black;
+    color: blue;
+    margin: 1em;
+    background-color: white;
+}
+
+
+.form div {
+    margin: auto;
+}
+
+.form {
+    margin:10em;
+    text-align: center;
+}
+
+.form input {
+    font-family: 'Libre Baskerville';
+    background-color: transparent;
+    border: 1px black solid;
+    width: 20em;
+}
+
+
+
+
+/* posts */
+
+#contents {
+    text-align: center;
+    font-family: 'Libre Baskerville';
+}
+
+#contents li {
+    border: 1px solid black;
+}
+
+.contents-list {
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.parent {
+  display: flex;
+  flex-direction: row-reverse;
+  width: auto;
+  margin-top: 2em;
+}
+
+.leftChild {
+  display: flex; 
+  flex-direction: column;
+  flex-basis: 20%;
+  align-items: center;
+  justify-content: space-around;
+  height: 10em;
+  margin-right: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.rightChild {
+  display: flex; 
+  flex-direction: column;
+  flex-basis: 80%;
+   align-items: stretch;
+  justify-content: center;
+}
+
+.rightChild a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    transition: 1s;
+    color: red;
+}
+
+.upChild {
+    order: 1;
+    align-self: auto;
+}
+
+.middleChild {
+    order: 2;
+    align-self: auto;
+}
+
+.downChild {
+    order: 3;
+    align-self: auto;
+}
+
+
+
+.topChild {
+    align-self: flex-start;
+}
+
+.midChild {
+    align-self: flex-start;
+}
+
+.bottomChild {
+  display: flex; 
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.bottomChildLeft {
+    align-self: flex-start;
+}
+.bottomChildRight {
+    align-self: flex-end;
+}
+
+
+/* create post */
+
+#submitPost {
+    display: inline-block;
+    margin: 1em;
+}
+
+
+
+.submit {
+    text-align: center;
+}

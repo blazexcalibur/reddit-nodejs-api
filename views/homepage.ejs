@@ -1,0 +1,80 @@
+<% layout('layout') -%>
+
+        <% function createLi(post) { %>
+            <li class="parent">
+                
+                <div class="rightChild">
+                    
+                    <div class="topChild">
+                        <h2 class="content-item__title">
+                            <a href="http://<%=post.url%>"><%= post.title%></a>
+                        </h2>
+                    </div>
+                    
+                    <div class="midChild">
+                        <a class="vote" href='/comments?post=<%=post.id%>'> VIEW COMMENTS!</a>
+                    </div>
+
+                    <div class="bottomChild">
+                        <div class="bottomChildLeft">
+                            <p>Created by&nbsp<%= post.user.username %> </p>
+                        </div>
+                        
+                        <div class="bottomChildRight">
+                            <p>&nbsp at
+                                <%= post.createdAt.toLocaleString() %>
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="leftChild">
+                    <form  action="/vote" method="post">
+                        <input type="hidden" name="vote" value="1">
+                        <input type="hidden" name="postId" value="<%=post.id%>">
+           
+                        <button class= "voteButton">upvote this</button>
+                    </form>
+                    
+                    <div class="middleChild">
+                        <p id="post_score_<%=post.id%>" class="voteScore">Vote Score:
+                            <%= post.voteScore = null? 0:post.voteScore %>
+                        </p>
+                    </div>
+                    
+                    <div class="downChild">
+                        <form  action="/vote" method="post">
+                            <input type="hidden" name="vote" value="-1">
+                            <input type="hidden" name="postId" value="<%=post.id%>">
+
+                            <button class = "voteButton">downvote this</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                
+
+            </li>
+            
+            <% } %>
+
+                <ul class="sort">
+                    <li class="sortli"><a href="/homepage/hot">Hot</a></li>
+                    <li class="sortli"><a href="/homepage/top">Top</a></li>
+                    <li class="sortli"><a href="/homepage/newest">Newest</a></li>
+                    <li class="sortli"><a href="/homepage/controversial">Controversial</a></li>
+                
+                </ul>
+                
+                <div id="contents">
+                    <h1>List of contents</h1>
+                    
+                    <ul class="contents-list">
+
+                        <% posts.forEach(function(post){
+                            createLi(post);
+                            }) %>
+                    </ul>
+                    
+                </div>

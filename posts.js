@@ -2095,19 +2095,17 @@ var testReplyComments = [{
 	"parentId": 1
 }];
 
-
 //insertPosts(testReplyComments);
 //console.log(testReplyComments);
-/*
- redditAPI.getCommentsForPost(1,function(err,res){
-     if (err){
-     	console.log(err.stack)
-     } else {
-     	console.log(JSON.stringify(res, null, 4));
-     }
-     connection.end();
- });
-*/
+
+ //redditAPI.getCommentsForPost(1, function(err,res){
+ //    if (err){
+ //    	console.log(err.stack)
+ //    } else {
+ //    	console.log(JSON.stringify(res, null, 4));
+ //    }
+ //    connection.end();
+ //});
 
 /*
 var testCommentObject = {
@@ -2166,8 +2164,8 @@ redditAPI.getAllPosts("hot", function(err,res){
     console.log(res)
      connection.end();
 });
-*/
 
+*/
 /*
 redditAPI.getCommentsForPost(1, function(err, comments) {
   
@@ -2267,3 +2265,8 @@ redditAPI.createPost({
     	console.log(err, res);
     })
     */
+/*    
+redditAPI.getVotescoreForPost(1,function(err,res){
+		console.log(res);
+})
+*/

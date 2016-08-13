@@ -209,10 +209,7 @@ app.get('/login', function(request, response) {
 
 });
 
-
-
 // all functions down here:
-
 
 //function for /homepage
 function returnString(posts) {

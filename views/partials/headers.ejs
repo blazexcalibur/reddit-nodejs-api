@@ -1,0 +1,40 @@
+<h class="ejsheader">
+    
+    <div class="relative">
+        <div class="topHeader">
+        <p class="topHeaderText">THE BEST REDDIT EVAAAAA! </p>
+        </div>    
+        <% function navbar(user) { if(user.loggedInUser) { %>
+            
+            <ul class="nav">
+                
+                <li class="navli"><a href="/homepage">Homepage</a></li>
+                <li class="navli"><a  href="/create">Create Post</a></li>
+                
+            </ul>
+            
+            <div class = "user">
+                <p class = "username">User: <%- user.loggedInUserName %>  </p>
+                
+                <form class = 'logoutForm' action="/logout" method="POST">
+                <button class= "button" type="submit">Log Me Out Now!</button>
+                </form>
+            
+                
+            </div>
+        
+        <% } else { %>
+        
+        <ul class="nav">
+            <li class="navli"><a  href="/homepage">Homepage</a></li>
+            <li class="navli"><a  href="/login">Login</a></li>
+            <li class="navli"><a  href="/signup">Signup</a></li>
+        </ul>
+        
+         <% } %>
+         <% } %>
+         
+    <% navbar(req) %>    
+        
+    </div>
+</h>

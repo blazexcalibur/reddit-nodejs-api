@@ -62,6 +62,12 @@ var returnString = "
         <a href="http://the.post.url.value/">
 "
 */
+
+select userId, users.username as username                
+        FROM sessions          
+        LEFT JOIN users ON sessions.userId=users.id;
+        
+/*      
 function returnString(obj){
   var str = `
 <div id="contents">
@@ -110,7 +116,7 @@ function returnString(obj){
 `;
 return str;
 }
-
+*/
 
 
 

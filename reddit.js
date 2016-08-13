@@ -23,6 +23,16 @@ module.exports = function RedditAPI(conn) {
       });
     },
 
+    deleteSession: function(userId, callback) {
+      conn.query('DELETE FROM sessions WHERE userId = ?', [userId], function(err, result) {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null,userId)
+        }
+      });
+    },
+
     createUser: function(user, callback) {
 
       // first we have to hash the password...
@@ -79,21 +89,40 @@ module.exports = function RedditAPI(conn) {
       });
     },
 
-    getUserFromSession: function(session, callback) {
-      if (session) {
-        //console.log("session exists")
-        conn.query(`select userId from sessions where token = ? `, [session], function(err, res) {
+    getUserFromId: function(userId, callback) {
+    conn.query(`select username from users where id = ? `, [userId], function(err, res) {
           if (err) {
             callback(err);
           }
           else {
-            //console.log('session quesry result is; ', res[0]);
-            callback(null, res[0].userId);
+            //console.log('users query result is ', res[0].username);
+            callback(null, res[0].username);
           }
+        })
+    },
+    
+    getUserFromSession: function(session, callback) {
+      if (session) {
+        //console.log("session exists")
+        conn.query(`select userId, users.username as username FROM sessions LEFT JOIN users ON sessions.userId=users.id where token = ? `, [session], function(err, res) {
+          
+          if (err) {
+            callback(err);
+          }
+    
+          else {
+            //console.log('session quesry result is; ', res[0]);
+            callback(null, res[0]);
+          }
+    
         });
-      } else {
+      }
+    
+      else {
         
       }
+    
+    
     },
 
     createPost: function(post, subredditId, callback) {
@@ -565,20 +594,40 @@ module.exports = function RedditAPI(conn) {
       conn.query(
         `
     SELECT
-      c1.id as c1_id, c1.text as c1_text, c1.parentId as c1_parentId,
-      c2.id as c2_id, c2.text as c2_text, c2.parentId as c2_parentId,
-      c3.id as c3_id, c3.text as c3_text, c3.parentId as c3_parentId
+      c1.id as c1_id, c1.text as c1_text, c1.parentId as c1_parentId, c1.userId as c1_userId, u1.username as c1_userName,
+      c2.id as c2_id, c2.text as c2_text, c2.parentId as c2_parentId, c2.userId as c2_userId, u2.username as c2_userName,
+      c3.id as c3_id, c3.text as c3_text, c3.parentId as c3_parentId, c3.userId as c3_userId, u3.username as c3_userName
     
     FROM comments c1
+    
+      LEFT JOIN users u1 ON c1.userId = u1.id
       LEFT JOIN comments c2 ON c1.id = c2.parentId
+      LEFT JOIN users u2 ON c2.userId = u2.id
       LEFT JOIN comments c3 ON c2.id = c3.parentId
+      LEFT JOIN users u3 ON c3.userId = u3.id
     
     WHERE c1.postId = ? AND c1.parentId IS NULL;
     `, [postId],
         callback
       )
-    }
+    },
 
+    getVotescoreForPost: function(postId, callback) {
+      conn.query(
+        `
+        SELECT           
+        posts.id,         
+        sum(vote) as voteScore
+        
+        FROM posts 
+        
+        LEFT JOIN votes ON votes.postId=posts.id         
+        WHERE posts.Id = ?`, [postId],
+        callback
+        )
+      }
+    
+    
     //keep these two brackets    
   };
 };
